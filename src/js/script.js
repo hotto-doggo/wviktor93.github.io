@@ -5,7 +5,7 @@ const btnDel = document.getElementById('todo__button-del');
 
 
 
-form.addEventListener('click', addTODO);
+form.addEventListener('submit', addTODO);
 
 function addTODO(event) {
     event.preventDefault();
