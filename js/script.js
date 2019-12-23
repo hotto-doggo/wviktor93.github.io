@@ -1,6 +1,9 @@
 const input = document.getElementById('input');
 const form = document.getElementById('form');
 const list = document.getElementById('list');
+const btnDel = document.getElementById('todo__button-del');
+
+
 
 form.addEventListener('click', addTODO);
 
@@ -23,13 +26,26 @@ function addTODO(event) {
 
 list.addEventListener('click', closeTODO);
 
-
 function closeTODO(event) {
-    console.log(event);
-    console.log(event.target);
-    event.target.classList.add('list-group-item-success');
+    // console.log(event);
+    // console.log(event.target);
+    event.target.classList.toggle('list-group-item-success');
+    event.target.classList.toggle('list-group-item-to-delete');
 }
 
 // function closeTODO() {
 //     this.classList.add('list-group-item-success');
+//     this.classList.add('list-group-item-to-delete');
 // }
+
+btnDel.addEventListener('click', deleteTODO);
+
+function deleteTODO() {
+    if (confirm("Вы точно хотите удалить выбранные?")) {
+        const TODOtoDel = document.querySelectorAll('.list-group-item-to-delete');
+        console.log(TODOtoDel.length);
+        TODOtoDel.forEach(function (item) {
+            item.remove();
+        })
+    }
+}

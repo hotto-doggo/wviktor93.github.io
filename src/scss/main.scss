@@ -1,0 +1,24 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.todo {
+
+    padding: 10px;
+
+    &__form{
+        width: 50%;
+        margin-bottom: 10px;
+    }
+    &__input{
+        margin-bottom: 10px;
+    }
+    &__button-del{
+        margin-bottom: 10px;
+    }
+    &__list-heading{
+        margin-bottom: 10px;
+    }
+}
