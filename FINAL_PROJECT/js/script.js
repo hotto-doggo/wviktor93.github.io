@@ -49,7 +49,7 @@ function isVisible(elem) {
     let windowHeight = document.documentElement.clientHeight;
 
     // видны верхний ИЛИ нижний край элемента
-    let topVisible = coords.top > 0 && coords.top < windowHeight;
+    let topVisible = coords.top > 600 && coords.top < windowHeight;
     let bottomVisible = coords.bottom < windowHeight && coords.bottom > 0;
 
     return topVisible || bottomVisible;
@@ -229,7 +229,7 @@ function toggleActiveHold() {
     document.querySelector(".choose__price-position.holder").innerHTML = document.querySelector(".choose__positions-holder-name" + "." + currHelmID).innerHTML;
 }
 
-// кнопка прокрутки "вверх"
+// button "up" animation
 
 const buttonUp = document.querySelector('.button-up');
 
