@@ -55,6 +55,8 @@ function isVisible(elem) {
     return topVisible || bottomVisible;
 }
 
+
+
 function showVisible() {
     for (let i = 0; i < prevAnimation.length; i++) {
         if (isVisible(prevAnimation[i])) {
@@ -98,7 +100,7 @@ function firstDefaultVis() {
             item.classList.remove('active');
         });
         this.classList.add('active');
-        constructorHelm.forEach((item) => { item.classList.remove('preview-animate'); });
+        // constructorHelm.forEach((item) => { item.classList.remove('preview-animate'); });
         constructorHelm.forEach((item) => { item.classList.add('choose-mod'); });
         constructorHelm.forEach((item) => { item.classList.remove('active'); });
         constructorHelm[0].classList.add('active');
@@ -109,7 +111,7 @@ function firstDefaultVis() {
         positionsHelm[0].classList.add('active');
 
 
-        constructorHold.forEach((item) => { item.classList.remove('preview-animate'); });
+        // constructorHold.forEach((item) => { item.classList.remove('preview-animate'); });
         constructorHold.forEach((item) => { item.classList.add('choose-mod'); });
         constructorHold.forEach((item) => { item.classList.remove('active'); });
         constructorHold[0].classList.add('active');
@@ -132,7 +134,7 @@ function firstDefaultHold() {
             item.classList.remove('active');
         });
         this.classList.add('active');
-        constructorHelm.forEach((item) => { item.classList.remove('preview-animate'); });
+        // constructorHelm.forEach((item) => { item.classList.remove('preview-animate'); });
         constructorHelm.forEach((item) => { item.classList.add('choose-mod'); });
         constructorHelm.forEach((item) => { item.classList.remove('active'); });
         constructorHelm[0].classList.add('active');
@@ -143,7 +145,7 @@ function firstDefaultHold() {
         positionsHelm[0].classList.add('active');
 
 
-        constructorVis.forEach((item) => { item.classList.remove('preview-animate'); });
+        // constructorVis.forEach((item) => { item.classList.remove('preview-animate'); });
         constructorVis.forEach((item) => { item.classList.add('choose-mod'); });
         constructorVis.forEach((item) => { item.classList.remove('active'); });
         constructorVis[0].classList.add('active');
@@ -175,10 +177,10 @@ function toggleActiveHelm() {
         item.classList.remove('active');
     });
     this.classList.add('active');
-    constructorHelm.forEach((item) => { item.classList.remove('preview-animate'); });
+    // constructorHelm.forEach((item) => { item.classList.remove('preview-animate'); });
     constructorHelm.forEach((item) => { item.classList.add('choose-mod'); });
     constructorHelm.forEach((item) => { item.classList.remove('active'); });
-    constructorVis.forEach((item) => { item.classList.remove('preview-animate'); });
+    // constructorVis.forEach((item) => { item.classList.remove('preview-animate'); });
     constructorVis.forEach((item) => { item.classList.add('choose-mod'); });
     constructorVis.forEach((item) => { item.classList.remove('active'); });
     constructorVis[0].classList.add('active');
@@ -187,7 +189,7 @@ function toggleActiveHelm() {
         item.classList.remove('active');
     });
     positionsVis[0].classList.add('active');
-    constructorHold.forEach((item) => { item.classList.remove("preview-animate"); });
+    // constructorHold.forEach((item) => { item.classList.remove("preview-animate"); });
     constructorHold.forEach((item) => { item.classList.add('choose-mod'); });
     const currHelmID = this.id;
     console.log(currHelmID);
@@ -199,12 +201,12 @@ function toggleActiveVis() {
         item.classList.remove('active');
     });
     this.classList.add('active');
-    constructorHelm.forEach((item) => { item.classList.remove('preview-animate'); });
+    // constructorHelm.forEach((item) => { item.classList.remove('preview-animate'); });
     constructorHelm.forEach((item) => { item.classList.add('choose-mod'); });
-    constructorVis.forEach((item) => { item.classList.remove('preview-animate'); });
+    // constructorVis.forEach((item) => { item.classList.remove('preview-animate'); });
     constructorVis.forEach((item) => { item.classList.add('choose-mod'); });
     constructorVis.forEach((item) => { item.classList.remove('active'); });
-    constructorHold.forEach((item) => { item.classList.remove("preview-animate"); });
+    // constructorHold.forEach((item) => { item.classList.remove("preview-animate"); });
     constructorHold.forEach((item) => { item.classList.add('choose-mod'); });
     const currHelmID = this.id;
     console.log(currHelmID);
@@ -216,11 +218,11 @@ function toggleActiveHold() {
         item.classList.remove('active');
     });
     this.classList.add('active');
-    constructorHelm.forEach((item) => { item.classList.remove('preview-animate'); });
+    // constructorHelm.forEach((item) => { item.classList.remove('preview-animate'); });
     constructorHelm.forEach((item) => { item.classList.add('choose-mod'); });
-    constructorVis.forEach((item) => { item.classList.remove('preview-animate'); });
+    // constructorVis.forEach((item) => { item.classList.remove('preview-animate'); });
     constructorVis.forEach((item) => { item.classList.add('choose-mod'); });
-    constructorHold.forEach((item) => { item.classList.remove("preview-animate"); });
+    // constructorHold.forEach((item) => { item.classList.remove("preview-animate"); });
     constructorHold.forEach((item) => { item.classList.add('choose-mod'); });
     constructorHold.forEach((item) => { item.classList.remove('active'); });
     const currHelmID = this.id;
