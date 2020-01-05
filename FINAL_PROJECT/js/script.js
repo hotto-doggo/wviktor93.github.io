@@ -239,11 +239,11 @@ window.addEventListener('scroll', showHideButtonUp);
 function showHideButtonUp() {
     const currentPagePosition = pageYOffset;
     if (currentPagePosition >= 200) {
-        buttonUp.style.animation = 'show-button-up .5s ease-out 1';
+        // buttonUp.style.animation = 'show-button-up .5s ease-out 1';
         buttonUp.classList.add('show');
         buttonUp.classList.remove('hide');
     } else {
-        buttonUp.style.animation = 'hide-button-up .5s ease-out 1';
+        // buttonUp.style.animation = 'hide-button-up .5s ease-out 1';
         buttonUp.classList.remove('show');
         buttonUp.classList.add('hide');
     }
