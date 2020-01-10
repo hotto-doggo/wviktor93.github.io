@@ -12,6 +12,16 @@
 
 <body>
 
+    <div id="preloader" class="preloader">
+        <div class="loader">
+            <div class="preloader__main-helmet-wrapper">
+                <img src="img/specifications-main-helmet.png" alt="preloader helmet" class="preloader__main-helmet">
+                <img src="img/preloader_before2.png" alt="circle" class="preloader__main-after">
+            </div>
+            <div id='preloader__line' class="preloader__line"></div>
+        </div>
+    </div>
+
     <div class="burger-nav">
         <ul class="burger-nav__list">
             <li class="burger-nav__list-item"><a href="#Customization"
@@ -52,7 +62,7 @@
         </div>
         <p class="burger__text">Menu</p>
     </div>
-    <div  onclick="window.location.href = '#Top'" class="button-up hide">
+    <div onclick="window.location.href = '#Top'" class="button-up hide">
     </div>
 
 
@@ -63,6 +73,7 @@
         <div class="container">
             <div class="header__logo">
                 <div class="header__logo-img"></div>
+                <div class="header__mobile-logo-img"></div>
             </div>
             <ul class="header__socialmedia">
                 <li class="header__socialmedia-item"><a href="" class="header__socialmedia-link icon-facebook"></a></li>
@@ -86,13 +97,14 @@
                 <div class="main__text-button-container button1-container">
                     <div class="main__text-button-line-before button1-line-before"></div>
                     <div class="main__text-button-wrapper button1-wrapper">
-                        <button onclick="window.location.href = '#Features'" class="main__text-button button1"> DISCOVER</button>
+                        <button onclick="window.location.href = '#Features'" class="main__text-button button1">
+                            DISCOVER</button>
                     </div>
                 </div>
             </div>
             <div class="main__img-button">
                 <img src="img/main_helmet.png" alt="Presentation helmet" class="main__img">
-                <button onclick="window.location.href = '#Customization'"  class="main__button">
+                <button onclick="window.location.href = '#Customization'" class="main__button">
                     <div class="main__button-img"></div>Customize
                 </button onclick="window.location.href = '#Features'">
             </div>
@@ -136,8 +148,8 @@
                         class="choose__slider-holder holder5 start-animation">
                     <img id="choice-holder6" src="img/holder_6.png" alt=""
                         class="choose__slider-holder holder6 start-animation">
-                    <img id="choice-holder7" src="img/holder_7.png" alt="" class="choose__slider-holder holder7">
-
+                    <img id="choice-holder7" src="img/holder_7.png" alt=""
+                        class="choose__slider-holder holder7 start-animation">
                 </div>
                 <div class="choose__prices">
                     <h2 class="choose__slider-heading">Your style</h2>
@@ -178,8 +190,13 @@
                 </div>
                 <div class="choose__positions-wrapper">
 
-                    <div class="choose__positions-helmets">
-                        <h2 class="choose__positions-helmets-heading">Helmet colour</h2>
+                    <div class="choose__positions-helmets mobile_step_show">
+
+                        <div class="choose__positions-option-heading-wrapper">
+                            <h2 class="choose__positions-step step1">STEP-1:&#160; </h2>
+                            <h2 class="choose__positions-helmets-heading">Helmet colour</h2>    
+                        </div>
+                        
                         <div class="choose__positions-helmets-wrapper">
                             <div id="helmet1" class="choose__positions-helmet helmet1">
                                 <img src="img/helmet_matte.png" alt="Matte Black" class="choose__positions-helmet-img">
@@ -200,10 +217,20 @@
                                 <p class="choose__positions-helmet-name helmet3">Brilliant White</p>
                             </div>
                         </div>
+                        <div class="choose__positions-button-container step1 button1-container">
+                            <div class="choose__positions-button-line-before button1-line-before"></div>
+                            <div class="choose__positions-button-wrapper button1-wrapper">
+                                <button class="choose__positions-button button1">NEXT STEP</button>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="choose__positions-visors">
-                        <h2 class="choose__positions-visors-heading">Visor colour</h2>
+                        <div class="choose__positions-option-heading-wrapper">
+                            <h2 class="choose__positions-step step2">STEP-2:&#160; </h2>
+                            <h2 class="choose__positions-visors-heading">Visor colour</h2>
+                        </div>
+                        
                         <div class="choose__positions-visors-wrapper">
                             <div id="visor1" class="choose__positions-visor">
                                 <img src="img/visor-1.png" alt="Menacing Tint" class="choose__positions-visor-img">
@@ -232,10 +259,20 @@
                                 <p class="choose__positions-visor-name visor6">Crystal Clear</p>
                             </div>
                         </div>
+                        <div class="choose__positions-button-container step2 button1-container">
+                            <div class="choose__positions-button-line-before button1-line-before"></div>
+                            <div class="choose__positions-button-wrapper button1-wrapper">
+                                <button class="choose__positions-button button1">NEXT STEP</button>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="choose__positions-holders">
-                        <h2 class="choose__positions-holders-heading">Visor Holders colour</h2>
+                        <div class="choose__positions-option-heading-wrapper">
+                            <h2 class="choose__positions-step step3">FINISH:&#160; </h2>
+                            <h2 class="choose__positions-holders-heading">Visor Holders colour</h2>
+                        </div>
+                        
                         <div class="choose__positions-holders-wrapper">
                             <div id="holder1" class="choose__positions-holder">
                                 <img src="img/holder_1.png" alt="Green holders" class="choose__positions-holder-img">
@@ -282,10 +319,12 @@
                     <div class="features__description-img start-animation">
                         <img src="img/number_4.png" alt="number 4" class="features__description-img-item">
                     </div>
-                    <h2 class="features__description-heading descript1">Top Air <br>inlets</h2>
-                    <p class="features__description-text text1">4 Top Air inlets including a GrillVent™ <br>chin
-                        ventilation
-                        syst</p>
+                    <div class="features__description-text-all">
+                        <h2 class="features__description-heading descript1">Top Air <br>inlets</h2>
+                        <p class="features__description-text text1">4 Top Air inlets including a GrillVent™ <br>chin
+                            ventilation
+                            syst</p>
+                    </div>
                     <div class="features__description-descript-wrapper">
                         <div class="features__description-descript-line"></div>
                         <p class="features__description-descript text1">The enlarged Easy Flow channels introduced on
@@ -298,10 +337,14 @@
                     </div>
                 </div>
                 <div class="features__evolution">
-                    <h2 class="features__evolution-heading1 heading1">Evolution</h2>
-                    <h2 class="features__evolution-heading2 descript1">The game <br>has changed </h2>
-                    <p class="features__evolution-descript text1">Legendary Stig racing helmet now adapted for <br>High
-                        Speed motorb</p>
+                    <div class="features__evolution-text">
+                        <h2 class="features__evolution-heading1 heading1">Evolution</h2>
+                        <h2 class="features__evolution-heading2 descript1">The game <br>has changed </h2>
+                        <p class="features__evolution-descript text1">Legendary Stig racing helmet now adapted for
+                            <br>High
+                            Speed motorb</p>
+                    </div>
+
                     <div class="features__evolution-img-wrapper start-animation">
                         <img src="img/evolution-helmet.png" alt="evolution helmet" class="features__evolution-img">
                     </div>
@@ -369,8 +412,10 @@
                     </div>
                 </div>
                 <div class="sizes__img start-animation">
-                    <div class="sizes__img-wrapper"></div>
-                    <img src="img/sizes-helmet.png" alt="size of helmet" class="sizes__img-image">
+                    <div class="sizes__img-wrapper">
+                        <img src="img/sizes-helmet.png" alt="size of helmet" class="sizes__img-image">
+                    </div>
+
                 </div>
             </div>
         </div>
@@ -403,12 +448,16 @@
                     <h2 class="specifications__protection-descript">Hi-Impact energy <br>absorption</h2>
                     <p class="specifications__protection-text">Inner shell with Hi-Impact energy absorption liner EPS
                     </p>
-                    <p class="specifications__protection-climat">Climat friendly</p>
+                    <!-- <p class="specifications__protection-climat">Climat friendly</p> -->
                     <div class="specifications__protection-note-wrapper">
                         <!-- <img src="img/temperature.svg" alt="temperature" class="specifications__protection-note-img"> -->
                         <img src="img/temperature.svg" alt="temperature" class="specifications__protection-note-img">
-                        <p class="specifications__protection-note">Quick Wicking Material keep you cool and <br>dry in
-                            hot summer days and comfortably <br>worm during a cold day</p>
+                        <div class="specifications__protection-note-text-wrapper">
+                            <p class="specifications__protection-climat">Climat friendly</p>
+                            <p class="specifications__protection-note">Quick Wicking Material keep you cool and <br>dry
+                                in
+                                hot summer days and comfortably <br>worm during a cold day</p>
+                        </div>
                     </div>
                 </div>
                 <div class="specifications__protection-img-wrapper start-animation">
@@ -506,20 +555,27 @@
         <div class="container">
             <div class="footer__logo">
                 <img src="img/logo_white-white.svg" alt="white logo" class="footer__logo-img">
-                <p class="footer__logo-text">Matrix is, quite simply, the next wave in motorcycle helmet and protective gear design and anufacturing. We create a classic , Modern and Authentic Streetfighter style helmet for riders who like to choose something exceptional.</p>
+                <p class="footer__logo-text">Matrix is, quite simply, the next wave in motorcycle helmet and protective
+                    gear design and anufacturing. We create a classic , Modern and Authentic Streetfighter style helmet
+                    for riders who like to choose something exceptional.</p>
             </div>
             <div class="footer__nav">
                 <h2 class="footer__heading">Navigation</h2>
                 <ul class="footer__nav-list">
                     <li class="footer__nav-list-item"><a href="#Customization"
                             class="footer__nav-list-item_link">Customization</a></li>
-                    <li class="footer__nav-list-item"><a href="#Features" class="footer__nav-list-item_link">Features</a></li>
-                    <li class="footer__nav-list-item"><a href="#Sizes" class="footer__nav-list-item_link">Size range</a></li>
+                    <li class="footer__nav-list-item"><a href="#Features"
+                            class="footer__nav-list-item_link">Features</a></li>
+                    <li class="footer__nav-list-item"><a href="#Sizes" class="footer__nav-list-item_link">Size range</a>
+                    </li>
                     <li class="footer__nav-list-item"><a href="#Specifications"
                             class="footer__nav-list-item_link">Specifications</a></li>
-                    <li class="footer__nav-list-item"><a href="#Contact" class="footer__nav-list-item_link">Contact</a></li>
-                    <li class="footer__nav-list-item"><a href="#About" class="footer__nav-list-item_link">About company</a></li>
-                    <li class="footer__nav-list-item"><a href="#Website" class="footer__nav-list-item_link">Visit official
+                    <li class="footer__nav-list-item"><a href="#Contact" class="footer__nav-list-item_link">Contact</a>
+                    </li>
+                    <li class="footer__nav-list-item"><a href="#About" class="footer__nav-list-item_link">About
+                            company</a></li>
+                    <li class="footer__nav-list-item"><a href="#Website" class="footer__nav-list-item_link">Visit
+                            official
                             website</a>
                     </li>
                     <li class="footer__nav-list-item"><a href="" class="footer__nav-list-item_link">Returns</a></li>
@@ -528,13 +584,17 @@
             <div class="footer__socialmedia">
                 <h2 class="footer__heading">Follow us</h2>
                 <ul class="footer__socialmedia-nav">
-                    <li class="footer__socialmedia-item"><a href="" class="footer__socialmedia-link icon-facebook"></a></li>
+                    <li class="footer__socialmedia-item"><a href="" class="footer__socialmedia-link icon-facebook"></a>
+                    </li>
                     <li class="footer__socialmedia-item"><a href="" class="footer__socialmedia-link icon-instagram"></a>
                     </li>
-                    <li class="footer__socialmedia-item"><a href="" class="footer__socialmedia-link icon-twitter"></a></li>
-                    <li class="footer__socialmedia-item"><a href="" class="footer__socialmedia-link icon-youtube"></a></li>
+                    <li class="footer__socialmedia-item"><a href="" class="footer__socialmedia-link icon-twitter"></a>
+                    </li>
+                    <li class="footer__socialmedia-item"><a href="" class="footer__socialmedia-link icon-youtube"></a>
+                    </li>
                 </ul>
-                <p class="footer__socialmedia-copyright">Copyright © 2018 <br>Matrix Motorcycle elmets. <br>All Rights Reserved..</p>
+                <p class="footer__socialmedia-copyright">Copyright © 2018 <br>Matrix Motorcycle elmets. <br>All Rights
+                    Reserved..</p>
             </div>
             <div class="footer__payments">
                 <h2 class="footer__heading">Payment option</h2>

@@ -62,7 +62,6 @@ function showVisible() {
         if (isVisible(prevAnimation[i])) {
             prevAnimation[i].classList.add('preview-animate')
         }
-        console.log(prevAnimation[i])
     }
 }
 
@@ -95,7 +94,7 @@ positionsHold.forEach((item) => {
 });
 
 function firstDefaultVis() {
-    if (isFirstUsageVis === true && isFirstUsageHold === true) {
+    if (isFirstUsageVis === true && isFirstUsageHold === true && document.documentElement.clientWidth >= 650) {
         positionsVis.forEach((item) => {
             item.classList.remove('active');
         });
@@ -237,8 +236,7 @@ const buttonUp = document.querySelector('.button-up');
 
 window.addEventListener('scroll', showHideButtonUp);
 function showHideButtonUp() {
-    const currentPagePosition = pageYOffset;
-    if (currentPagePosition >= 200) {
+    if (pageYOffset >= 200) {
         // buttonUp.style.animation = 'show-button-up .5s ease-out 1';
         buttonUp.classList.add('show');
         buttonUp.classList.remove('hide');
@@ -249,3 +247,147 @@ function showHideButtonUp() {
     }
 }
 
+showHideButtonUp();
+
+
+
+
+
+
+// resizing transformation
+
+
+window.addEventListener("resize", chooseResizing);
+
+function chooseResizing() {
+    const totalPrice = document.querySelector(".choose__prices");
+    const chooseHeading = document.querySelector(".choose__positions-heading-wrapper");
+    const featuresNote = document.querySelector(".features__description-note-wrapper");
+    if (document.documentElement.clientWidth <= 1024) {
+        document.querySelector(".choose .container").append(totalPrice);
+        document.querySelector(".choose .container").prepend(chooseHeading);
+        document.querySelector(".features__evolution").after(featuresNote);
+    } else {
+        document.querySelector(".choose__slider-price").append(totalPrice);
+        document.querySelector(".choose__positions").prepend(chooseHeading);
+        document.querySelector(".features__description").append(featuresNote);
+    }
+}
+
+chooseResizing();
+
+window.addEventListener("resize", mobileResizing);
+
+function mobileResizing() {
+    const mainImg = document.querySelector(".main__img-button");
+
+    if (document.documentElement.clientWidth <= 650) {
+        document.querySelector(".main__text-descript").after(mainImg);
+    } else {
+
+        document.querySelector(".main .container").append(mainImg);
+    }
+}
+
+mobileResizing();
+
+
+
+
+//mobile steps slider
+
+const isChosenFlag1 = false;
+positionsHelm.forEach((item) => {
+    item.addEventListener('click', changeFlag1);
+});
+
+function changeFlag1() {
+    isChosenFlag1 = true;
+}
+
+const step1 = document.querySelector('.choose__positions-button-container.step1');
+
+step1.addEventListener('click', toStep2);
+
+function toStep2() {
+    if (isChosenFlag1 === false) {
+        constructorHelm.forEach((item) => { item.classList.add('choose-mod'); });
+        constructorHelm.forEach((item) => { item.classList.remove('active'); });
+        constructorHelm[0].classList.add('active');
+        document.querySelector(".choose__price-position.helmet").innerHTML = document.querySelector(".choose__positions-helmet-name.helmet1").innerHTML;
+        // constructorVis.forEach((item) => { item.classList.remove('preview-animate'); });
+        constructorVis.forEach((item) => { item.classList.add('choose-mod'); });
+        constructorVis.forEach((item) => { item.classList.remove('active'); });
+        constructorVis[0].classList.add('active');
+        document.querySelector(".choose__price-position.visor").innerHTML = document.querySelector(".choose__positions-visor-name.visor1").innerHTML;
+        positionsVis.forEach((item) => {
+            item.classList.remove('active');
+        });
+        positionsVis[0].classList.add('active');
+        // constructorHold.forEach((item) => { item.classList.remove("preview-animate"); });
+        constructorHold.forEach((item) => { item.classList.add('choose-mod'); });
+        constructorHold.forEach((item) => { item.classList.remove('active'); });
+        constructorHold[0].classList.add('active');
+        document.querySelector(".choose__price-position.holder").innerHTML = document.querySelector(".choose__positions-holder-name.holder1").innerHTML;
+        positionsHold.forEach((item) => {
+            item.classList.remove('active');
+        });
+        positionsHold[0].classList.add('active');
+    }
+    document.querySelector('.choose__positions-helmets').classList.toggle('mobile_step_show');
+    document.querySelector('.choose__positions-visors').classList.toggle('mobile_step_show');
+    document.querySelector('.choose__positions-wrapper').style.transform = 'translateX(0%)'
+}
+
+const step2 = document.querySelector('.choose__positions-button-container.step2');
+
+step2.addEventListener('click', toStep3);
+
+function toStep3() {
+    document.querySelector('.choose__positions-visors').classList.toggle('mobile_step_show');
+    document.querySelector('.choose__positions-holders').classList.toggle('mobile_step_show');
+    document.querySelector('.choose__positions-wrapper').style.transform = 'translateX(-30%)'
+}
+
+
+
+
+// preloader
+
+// document.body.onload = function () {
+
+//     setTimeout(function () {
+
+//         if (!preloader.classList.contains('done')) {
+//             preloader.classList.add('done');
+//         }
+//     }, 1000);
+// }
+
+
+let images = document.images;
+let imagesTotalCount = images.length;
+let imagesLoadedCount = 0;
+let preloader = document.getElementById('preloader');
+let percLine = document.getElementById('preloader__line');
+
+for (let i = 0; i < imagesTotalCount; i++) {
+    imageClone = new Image();
+    imageClone.onload = imageLoaded;
+    imageClone.onerror = imageLoaded;
+    imageClone.src = images[i].src;
+}
+
+function imageLoaded() {
+    imagesLoadedCount++;
+    percLine.style.width = ((100 / imagesTotalCount) * imagesLoadedCount << 0) + '%';
+
+    if (imagesLoadedCount >= imagesTotalCount) {
+        setTimeout(function () {
+
+            if (!preloader.classList.contains('done')) {
+                preloader.classList.add('done');
+            }
+        }, 1000);
+    }
+}
