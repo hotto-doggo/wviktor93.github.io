@@ -47,9 +47,9 @@ function isVisible(elem) {
     let coords = elem.getBoundingClientRect();
 
     let windowHeight = document.documentElement.clientHeight;
+    let topVisible;
 
-    // видны верхний ИЛИ нижний край элемента
-    let topVisible = coords.top > 600 && coords.top < windowHeight;
+    topVisible = coords.top > 600 && coords.top < windowHeight;
     let bottomVisible = coords.bottom < windowHeight && coords.bottom > 0;
 
     return topVisible || bottomVisible;
@@ -85,6 +85,15 @@ const constructorHold = document.querySelectorAll('.choose__slider-holder');
 
 let isFirstUsageVis = true;
 let isFirstUsageHold = true;
+let isFirstUsageHelm = true;
+
+positionsHelm.forEach((item) => {
+    item.addEventListener('click', FirstUsageHelm);
+});
+
+function FirstUsageHelm(){
+    isFirstUsageHelm = false;
+}
 
 positionsVis.forEach((item) => {
     item.addEventListener('click', firstDefaultVis);
@@ -94,27 +103,35 @@ positionsHold.forEach((item) => {
 });
 
 function firstDefaultVis() {
-    if (isFirstUsageVis === true && isFirstUsageHold === true && document.documentElement.clientWidth >= 650) {
+    if (isFirstUsageVis === true && isFirstUsageHold === true && document.documentElement.clientWidth >= 650 && isFirstUsageHelm === true) {
         positionsVis.forEach((item) => {
             item.classList.remove('active');
         });
         this.classList.add('active');
-        // constructorHelm.forEach((item) => { item.classList.remove('preview-animate'); });
+
         constructorHelm.forEach((item) => { item.classList.add('choose-mod'); });
+        buyCartLeftHelm.forEach((item) => { item.classList.add('choose-mod'); });
         constructorHelm.forEach((item) => { item.classList.remove('active'); });
+        buyCartLeftHelm.forEach((item) => { item.classList.remove('active'); });
         constructorHelm[0].classList.add('active');
-        document.querySelector(".choose__price-position.helmet").innerHTML = document.querySelector(".choose__positions-helmet-name.helmet1").innerHTML;
+        buyCartLeftHelm[0].classList.add('active');
+        document.querySelectorAll(".choose__price-position.helmet").forEach((item) => { item.innerHTML = document.querySelector(".choose__positions-helmet-name.helmet1").innerHTML });
         positionsHelm.forEach((item) => {
             item.classList.remove('active');
         });
         positionsHelm[0].classList.add('active');
 
 
-        // constructorHold.forEach((item) => { item.classList.remove('preview-animate'); });
         constructorHold.forEach((item) => { item.classList.add('choose-mod'); });
+        buyCartLeftHold.forEach((item) => { item.classList.add('choose-mod'); });
         constructorHold.forEach((item) => { item.classList.remove('active'); });
+        buyCartLeftHold.forEach((item) => { item.classList.remove('active'); });
         constructorHold[0].classList.add('active');
-        document.querySelector(".choose__price-position.holder").innerHTML = document.querySelector(".choose__positions-holder-name.holder1").innerHTML;
+        buyCartLeftHold[0].classList.add('active');
+        document.querySelectorAll(".choose__price-position.holder").forEach((item) => { item.innerHTML = document.querySelector(".choose__positions-holder-name.holder1").innerHTML; });
+
+
+
         positionsHold.forEach((item) => {
             item.classList.remove('active');
         });
@@ -123,6 +140,7 @@ function firstDefaultVis() {
         const currHelmID = this.id;
         console.log(currHelmID);
         document.getElementById('choice-' + currHelmID).classList.add('active');
+        document.getElementById('choice-' + currHelmID + '_buy-cart').classList.add('active');
     }
     isFirstUsageVis = false;
 }
@@ -133,22 +151,34 @@ function firstDefaultHold() {
             item.classList.remove('active');
         });
         this.classList.add('active');
-        // constructorHelm.forEach((item) => { item.classList.remove('preview-animate'); });
+
         constructorHelm.forEach((item) => { item.classList.add('choose-mod'); });
+        buyCartLeftHelm.forEach((item) => { item.classList.add('choose-mod'); });
         constructorHelm.forEach((item) => { item.classList.remove('active'); });
+        buyCartLeftHelm.forEach((item) => { item.classList.remove('active'); });
         constructorHelm[0].classList.add('active');
-        document.querySelector(".choose__price-position.helmet").innerHTML = document.querySelector(".choose__positions-helmet-name.helmet1").innerHTML;
+        buyCartLeftHelm[0].classList.add('active');
+        document.querySelectorAll(".choose__price-position.helmet").forEach((item) => {
+            item.innerHTML = document.querySelector(".choose__positions-helmet-name.helmet1").innerHTML;
+        });
+
         positionsHelm.forEach((item) => {
             item.classList.remove('active');
         });
         positionsHelm[0].classList.add('active');
 
 
-        // constructorVis.forEach((item) => { item.classList.remove('preview-animate'); });
         constructorVis.forEach((item) => { item.classList.add('choose-mod'); });
+        buyCartLeftVis.forEach((item) => { item.classList.add('choose-mod'); });
         constructorVis.forEach((item) => { item.classList.remove('active'); });
+        buyCartLeftVis.forEach((item) => { item.classList.remove('active'); });
         constructorVis[0].classList.add('active');
-        document.querySelector(".choose__price-position.visor").innerHTML = document.querySelector(".choose__positions-visor-name.visor1").innerHTML;
+        buyCartLeftVis[0].classList.add('active');
+        document.querySelectorAll(".choose__price-position.visor").forEach((item) => {
+            item.innerHTML = document.querySelector(".choose__positions-visor-name.visor1").innerHTML;
+        });
+
+
         positionsVis.forEach((item) => {
             item.classList.remove('active');
         });
@@ -157,6 +187,7 @@ function firstDefaultHold() {
         const currHelmID = this.id;
         console.log(currHelmID);
         document.getElementById('choice-' + currHelmID).classList.add('active');
+        document.getElementById('choice-' + currHelmID + '_buy-cart').classList.add('active');
     }
     isFirstUsageHold = false;
 }
@@ -176,59 +207,121 @@ function toggleActiveHelm() {
         item.classList.remove('active');
     });
     this.classList.add('active');
-    // constructorHelm.forEach((item) => { item.classList.remove('preview-animate'); });
+
     constructorHelm.forEach((item) => { item.classList.add('choose-mod'); });
+    buyCartLeftHelm.forEach((item) => { item.classList.add('choose-mod'); });
     constructorHelm.forEach((item) => { item.classList.remove('active'); });
-    // constructorVis.forEach((item) => { item.classList.remove('preview-animate'); });
+    buyCartLeftHelm.forEach((item) => { item.classList.remove('active'); });
+
+
+
     constructorVis.forEach((item) => { item.classList.add('choose-mod'); });
+    buyCartLeftVis.forEach((item) => { item.classList.add('choose-mod'); });
     constructorVis.forEach((item) => { item.classList.remove('active'); });
+    buyCartLeftVis.forEach((item) => { item.classList.remove('active'); });
     constructorVis[0].classList.add('active');
-    document.querySelector(".choose__price-position.visor").innerHTML = document.querySelector(".choose__positions-visor-name.visor1").innerHTML;
+    buyCartLeftVis[0].classList.add('active');
+    document.querySelectorAll(".choose__price-position.visor").forEach((item) => {
+        item.innerHTML = document.querySelector(".choose__positions-visor-name.visor1").innerHTML;
+    });
+
     positionsVis.forEach((item) => {
         item.classList.remove('active');
     });
     positionsVis[0].classList.add('active');
-    // constructorHold.forEach((item) => { item.classList.remove("preview-animate"); });
+
+
+
     constructorHold.forEach((item) => { item.classList.add('choose-mod'); });
+    buyCartLeftHold.forEach((item) => { item.classList.add('choose-mod'); });
+    constructorHold.forEach((item) => { item.classList.remove('active'); });
+    buyCartLeftHold.forEach((item) => { item.classList.remove('active'); });
+    constructorHold[0].classList.add('active');
+    buyCartLeftHold[0].classList.add('active');
+    document.querySelectorAll(".choose__price-position.holder").forEach((item) => {
+        item.innerHTML = document.querySelector(".choose__positions-holder-name.holder1").innerHTML;
+    });
+    positionsHold.forEach((item) => {
+        item.classList.remove('active');
+    });
+    positionsHold[0].classList.add('active');
+
     const currHelmID = this.id;
     console.log(currHelmID);
     document.getElementById('choice-' + currHelmID).classList.add('active');
-    document.querySelector(".choose__price-position.helmet").innerHTML = document.querySelector(".choose__positions-helmet-name" + "." + currHelmID).innerHTML;
+    document.getElementById('choice-' + currHelmID + '_buy-cart').classList.add('active');
+    document.querySelectorAll(".choose__price-position.helmet").forEach((item) => {
+        item.innerHTML = document.querySelector(".choose__positions-helmet-name" + "." + currHelmID).innerHTML;
+    });
 }
 function toggleActiveVis() {
     positionsVis.forEach((item) => {
         item.classList.remove('active');
     });
     this.classList.add('active');
-    // constructorHelm.forEach((item) => { item.classList.remove('preview-animate'); });
     constructorHelm.forEach((item) => { item.classList.add('choose-mod'); });
-    // constructorVis.forEach((item) => { item.classList.remove('preview-animate'); });
+    buyCartLeftHelm.forEach((item) => { item.classList.add('choose-mod'); });
     constructorVis.forEach((item) => { item.classList.add('choose-mod'); });
+    buyCartLeftHelm.forEach((item) => { item.classList.add('choose-mod'); });
     constructorVis.forEach((item) => { item.classList.remove('active'); });
-    // constructorHold.forEach((item) => { item.classList.remove("preview-animate"); });
+    buyCartLeftVis.forEach((item) => { item.classList.remove('active'); });
     constructorHold.forEach((item) => { item.classList.add('choose-mod'); });
+    buyCartLeftHold.forEach((item) => { item.classList.add('choose-mod'); });
     const currHelmID = this.id;
     console.log(currHelmID);
     document.getElementById('choice-' + currHelmID).classList.add('active');
-    document.querySelector(".choose__price-position.visor").innerHTML = document.querySelector(".choose__positions-visor-name" + "." + currHelmID).innerHTML;
+    document.getElementById('choice-' + currHelmID + '_buy-cart').classList.add('active');
+    document.querySelectorAll(".choose__price-position.visor").forEach((item) => {
+        item.innerHTML = document.querySelector(".choose__positions-visor-name" + "." + currHelmID).innerHTML;
+    });
 }
 function toggleActiveHold() {
     positionsHold.forEach((item) => {
         item.classList.remove('active');
     });
     this.classList.add('active');
-    // constructorHelm.forEach((item) => { item.classList.remove('preview-animate'); });
     constructorHelm.forEach((item) => { item.classList.add('choose-mod'); });
-    // constructorVis.forEach((item) => { item.classList.remove('preview-animate'); });
+    buyCartLeftHelm.forEach((item) => { item.classList.add('choose-mod'); });
     constructorVis.forEach((item) => { item.classList.add('choose-mod'); });
-    // constructorHold.forEach((item) => { item.classList.remove("preview-animate"); });
+    buyCartLeftVis.forEach((item) => { item.classList.add('choose-mod'); });
     constructorHold.forEach((item) => { item.classList.add('choose-mod'); });
+    buyCartLeftHold.forEach((item) => { item.classList.add('choose-mod'); });
     constructorHold.forEach((item) => { item.classList.remove('active'); });
+    buyCartLeftHold.forEach((item) => { item.classList.remove('active'); });
     const currHelmID = this.id;
     console.log(currHelmID);
     document.getElementById('choice-' + currHelmID).classList.add('active');
-    document.querySelector(".choose__price-position.holder").innerHTML = document.querySelector(".choose__positions-holder-name" + "." + currHelmID).innerHTML;
+    document.getElementById('choice-' + currHelmID + '_buy-cart').classList.add('active');
+    document.querySelectorAll(".choose__price-position.holder").forEach((item) => {
+        item.innerHTML = document.querySelector(".choose__positions-holder-name" + "." + currHelmID).innerHTML;
+    });
 }
+
+
+// if (document.documentElement.clientWidth <= 650) {
+//     positionsHelm.forEach((item) => {
+//         item.classList.remove('active');
+//     });
+//     positionsHelm[0].classList.add('active');
+//     // constructorHelm.forEach((item) => { item.classList.remove('preview-animate'); });
+//     constructorHelm.forEach((item) => { item.classList.add('choose-mod'); });
+//     constructorHelm.forEach((item) => { item.classList.remove('active'); });
+//     // constructorVis.forEach((item) => { item.classList.remove('preview-animate'); });
+//     constructorVis.forEach((item) => { item.classList.add('choose-mod'); });
+//     constructorVis.forEach((item) => { item.classList.remove('active'); });
+//     constructorVis[0].classList.add('active');
+//     document.querySelector(".choose__price-position.visor").innerHTML = document.querySelector(".choose__positions-visor-name.visor1").innerHTML;
+//     positionsVis.forEach((item) => {
+//         item.classList.remove('active');
+//     });
+//     positionsVis[0].classList.add('active');
+//     // constructorHold.forEach((item) => { item.classList.remove("preview-animate"); });
+//     constructorHold.forEach((item) => { item.classList.add('choose-mod'); });
+//     document.getElementById('choice-' + positionsHelm[0].id).classList.add('active');
+//     document.querySelector(".choose__price-position.helmet").innerHTML = document.querySelector(".choose__positions-helmet-name" + "." + currHelmID).innerHTML;
+// }
+
+
 
 // button "up" animation
 
@@ -236,12 +329,10 @@ const buttonUp = document.querySelector('.button-up');
 
 window.addEventListener('scroll', showHideButtonUp);
 function showHideButtonUp() {
-    if (pageYOffset >= 200) {
-        // buttonUp.style.animation = 'show-button-up .5s ease-out 1';
+    if (pageYOffset >= 200 && document.documentElement.clientWidth > 650) {
         buttonUp.classList.add('show');
         buttonUp.classList.remove('hide');
     } else {
-        // buttonUp.style.animation = 'hide-button-up .5s ease-out 1';
         buttonUp.classList.remove('show');
         buttonUp.classList.add('hide');
     }
@@ -267,10 +358,12 @@ function chooseResizing() {
         document.querySelector(".choose .container").append(totalPrice);
         document.querySelector(".choose .container").prepend(chooseHeading);
         document.querySelector(".features__evolution").after(featuresNote);
+
     } else {
         document.querySelector(".choose__slider-price").append(totalPrice);
         document.querySelector(".choose__positions").prepend(chooseHeading);
         document.querySelector(".features__description").append(featuresNote);
+
     }
 }
 
@@ -280,12 +373,12 @@ window.addEventListener("resize", mobileResizing);
 
 function mobileResizing() {
     const mainImg = document.querySelector(".main__img-button");
-
     if (document.documentElement.clientWidth <= 650) {
         document.querySelector(".main__text-descript").after(mainImg);
+        document.querySelector(".footer__socialmedia").after(buttonUp);
     } else {
-
         document.querySelector(".main .container").append(mainImg);
+        document.querySelector(".burger").after(buttonUp);
     }
 }
 
@@ -296,7 +389,7 @@ mobileResizing();
 
 //mobile steps slider
 
-const isChosenFlag1 = false;
+let isChosenFlag1 = false;
 positionsHelm.forEach((item) => {
     item.addEventListener('click', changeFlag1);
 });
@@ -312,23 +405,37 @@ step1.addEventListener('click', toStep2);
 function toStep2() {
     if (isChosenFlag1 === false) {
         constructorHelm.forEach((item) => { item.classList.add('choose-mod'); });
+        buyCartLeftHelm.forEach((item) => { item.classList.add('choose-mod'); });
         constructorHelm.forEach((item) => { item.classList.remove('active'); });
+        buyCartLeftHelm.forEach((item) => { item.classList.remove('active'); });
         constructorHelm[0].classList.add('active');
-        document.querySelector(".choose__price-position.helmet").innerHTML = document.querySelector(".choose__positions-helmet-name.helmet1").innerHTML;
-        // constructorVis.forEach((item) => { item.classList.remove('preview-animate'); });
+        buyCartLeftHelm[0].classList.add('active');
+        document.querySelectorAll(".choose__price-position.helmet").forEach((item) => {
+            item.innerHTML = document.querySelector(".choose__positions-helmet-name.helmet1").innerHTML;
+        });
         constructorVis.forEach((item) => { item.classList.add('choose-mod'); });
+        buyCartLeftVis.forEach((item) => { item.classList.add('choose-mod'); });
         constructorVis.forEach((item) => { item.classList.remove('active'); });
+        buyCartLeftVis.forEach((item) => { item.classList.remove('active'); });
         constructorVis[0].classList.add('active');
-        document.querySelector(".choose__price-position.visor").innerHTML = document.querySelector(".choose__positions-visor-name.visor1").innerHTML;
+        buyCartLeftVis[0].classList.add('active');
+        document.querySelectorAll(".choose__price-position.visor").forEach((item) => {
+            item.innerHTML = document.querySelector(".choose__positions-visor-name.visor1").innerHTML;
+        });
         positionsVis.forEach((item) => {
             item.classList.remove('active');
         });
         positionsVis[0].classList.add('active');
-        // constructorHold.forEach((item) => { item.classList.remove("preview-animate"); });
+
         constructorHold.forEach((item) => { item.classList.add('choose-mod'); });
+        buyCartLeftHold.forEach((item) => { item.classList.add('choose-mod'); });
         constructorHold.forEach((item) => { item.classList.remove('active'); });
+        buyCartLeftHold.forEach((item) => { item.classList.remove('active'); });
         constructorHold[0].classList.add('active');
-        document.querySelector(".choose__price-position.holder").innerHTML = document.querySelector(".choose__positions-holder-name.holder1").innerHTML;
+        buyCartLeftHold[0].classList.add('active');
+        document.querySelectorAll(".choose__price-position.holder").forEach((item) => {
+            item.innerHTML = document.querySelector(".choose__positions-holder-name.holder1").innerHTML;
+        });
         positionsHold.forEach((item) => {
             item.classList.remove('active');
         });
@@ -354,28 +461,28 @@ function toStep3() {
 
 // preloader
 
-// document.body.onload = function () {
-
-//     setTimeout(function () {
-
-//         if (!preloader.classList.contains('done')) {
-//             preloader.classList.add('done');
-//         }
-//     }, 1000);
-// }
-
-
-let images = document.images;
+let images = document.querySelectorAll('div')
 let imagesTotalCount = images.length;
 let imagesLoadedCount = 0;
 let preloader = document.getElementById('preloader');
 let percLine = document.getElementById('preloader__line');
 
 for (let i = 0; i < imagesTotalCount; i++) {
-    imageClone = new Image();
-    imageClone.onload = imageLoaded;
-    imageClone.onerror = imageLoaded;
-    imageClone.src = images[i].src;
+
+    try {
+        imageClone = new Image();
+        imageClone.onload = imageLoaded;
+        imageClone.onerror = imageLoaded;
+        if (images[i].src == undefined) {
+            imageClone.src = 'img/BG.png';
+        } else {
+            imageClone.src = images[i].src;
+        }
+    } catch (e) {
+        console.log('exception')
+    }
+
+
 }
 
 function imageLoaded() {
@@ -384,10 +491,127 @@ function imageLoaded() {
 
     if (imagesLoadedCount >= imagesTotalCount) {
         setTimeout(function () {
-
-            if (!preloader.classList.contains('done')) {
-                preloader.classList.add('done');
-            }
+            preloader.classList.add('done');
         }, 1000);
     }
 }
+
+
+
+
+//buy cart copy positions
+
+window.addEventListener("resize", buyCartCopyPositions);
+
+function buyCartCopyPositions() {
+    const buyCartLeft = document.querySelector('.buy-helmet__choice');
+    const buyCartRight = document.querySelector('.buy-helmet__specifics-button');
+    if (document.documentElement.clientWidth > 1024) {
+        buyCartLeft.innerHTML = '';
+        buyCartRight.innerHTML = '';
+        const buyCartRightHeading = document.createElement('div');
+        buyCartRightHeading.classList.add('buy-helmet__specifics-button-heading');
+        buyCartRightHeading.innerHTML = 'Buy Helmet';
+        buyCartRight.append(buyCartRightHeading);
+
+
+        const buyCartLeftContent = document.querySelector('.choose__slider-price');
+        const buyCartLeftContentClone = buyCartLeftContent.cloneNode(true);
+        buyCartLeft.append(buyCartLeftContentClone);
+
+        const buyCartLeftTotalPrice = document.querySelector('.buy-helmet__choice .choose__total-price');
+        buyCartRight.append(buyCartLeftTotalPrice);
+
+        const buyCartRightContent = document.querySelector('.sizes__buttons');
+        const buyCartRightContentClone = buyCartRightContent.cloneNode(true);
+        buyCartRight.append(buyCartRightContentClone);
+
+        const buyCartLeftBuyButton = document.querySelector('.buy-helmet__choice .choose__buy-button-container');
+        buyCartRight.append(buyCartLeftBuyButton);
+        document.querySelector('.buy-helmet__choice .choose__buy-text').remove()
+
+        document.querySelector('.buy-helmet__specifics-button .choose__buy-button').innerHTML = "ADD TO CART";
+    } else if (document.documentElement.clientWidth <= 1024) {
+        buyCartLeft.innerHTML = '';
+        buyCartRight.innerHTML = '';
+        const buyCartRightHeading = document.createElement('div');
+        buyCartRightHeading.classList.add('buy-helmet__specifics-button-heading');
+        buyCartRightHeading.innerHTML = 'Buy Helmet';
+        buyCartRight.append(buyCartRightHeading);
+
+
+        const buyCartLeftContent = document.querySelector('.choose__slider-price');
+        const buyCartLeftContentClone = buyCartLeftContent.cloneNode(true);
+        buyCartLeft.append(buyCartLeftContentClone);
+
+        const buyCartLeftContentPrices = document.querySelector('.choose__prices');
+        const buyCartLeftContentPricesClone = buyCartLeftContentPrices.cloneNode(true);
+        buyCartLeft.append(buyCartLeftContentPricesClone);
+
+        const buyCartLeftTotalPrice = document.querySelector('.buy-helmet__choice .choose__total-price');
+        buyCartRight.append(buyCartLeftTotalPrice);
+
+        const buyCartRightContent = document.querySelector('.sizes__buttons');
+        const buyCartRightContentClone = buyCartRightContent.cloneNode(true);
+        buyCartRight.append(buyCartRightContentClone);
+
+        const buyCartLeftBuyButton = document.querySelector('.buy-helmet__choice .choose__buy-button-container');
+        buyCartRight.append(buyCartLeftBuyButton);
+        document.querySelector('.buy-helmet__choice .choose__buy-text').remove()
+
+        document.querySelector('.buy-helmet__specifics-button .choose__buy-button').innerHTML = "ADD TO CART";
+    }
+
+}
+
+buyCartCopyPositions();
+
+
+
+// buy button open chart
+
+const buyCart = document.querySelector('.buy-helmet');
+
+const buyButton = document.querySelector('.choose .choose__buy-button-container');
+buyButton.addEventListener('click', toggleActiveCart)
+
+const closeCartButton = document.querySelector('.buy-helmet .burger-nav__button');
+closeCartButton.addEventListener('click', toggleActiveCart)
+
+function toggleActiveCart() {
+    buyCart.classList.toggle('active');
+}
+
+
+
+
+
+
+//change buy cart helmet
+
+
+const buyCartLeftHelm = document.querySelectorAll('.buy-helmet__choice .choose__slider-helmet');
+
+buyCartLeftHelm.forEach((item) => {
+    const currID = item.id;
+    item.id = currID + '_buy-cart';
+})
+console.log(buyCartLeftHelm)
+
+const buyCartLeftVis = document.querySelectorAll('.buy-helmet__choice .choose__slider-visor');
+
+buyCartLeftVis.forEach((item) => {
+    const currID = item.id;
+    item.id = currID + '_buy-cart';
+})
+
+console.log(buyCartLeftVis)
+
+const buyCartLeftHold = document.querySelectorAll('.buy-helmet__choice .choose__slider-holder');
+
+buyCartLeftHold.forEach((item) => {
+    const currID = item.id;
+    item.id = currID + '_buy-cart';
+})
+
+console.log(buyCartLeftHold)
