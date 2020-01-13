@@ -1,15 +1,25 @@
 //burgermenue
 const burgerButton = document.querySelector(".burger");
 const burgerButton2 = document.querySelector(".burger-nav__button");
+const burgerMenu = document.querySelector(".burger-nav");
 
-burgerButton.addEventListener('click', toggleBurgerMenu);
-burgerButton2.addEventListener('click', toggleBurgerMenu);
-
-function toggleBurgerMenu() {
-    const burgerMenu = document.querySelector(".burger-nav");
-    burgerMenu.classList.toggle("active");
-    burgerButton.classList.toggle("active");
+document.addEventListener('click', openCloseBurger);
+function openCloseBurger(event) {
+    if (event.target !== burgerMenu && burgerMenu.classList.contains("active") && !event.target.closest('.burger-nav__list')) {
+        burgerMenu.classList.remove("active");
+        burgerButton.classList.remove("active");
+    } else if (event.target.closest('.burger') || event.target === burgerButton2) {
+        burgerMenu.classList.toggle("active");
+        burgerButton.classList.toggle("active");
+    }
 }
+
+// burgerButton.addEventListener('click', toggleBurgerMenu);
+// burgerButton2.addEventListener('click', toggleBurgerMenu);
+// function toggleBurgerMenu() {
+//     burgerMenu.classList.toggle("active");
+//     burgerButton.classList.toggle("active");
+// }
 
 //all onscroll start-animation
 
@@ -91,7 +101,7 @@ positionsHelm.forEach((item) => {
     item.addEventListener('click', FirstUsageHelm);
 });
 
-function FirstUsageHelm(){
+function FirstUsageHelm() {
     isFirstUsageHelm = false;
 }
 
@@ -596,7 +606,6 @@ buyCartLeftHelm.forEach((item) => {
     const currID = item.id;
     item.id = currID + '_buy-cart';
 })
-console.log(buyCartLeftHelm)
 
 const buyCartLeftVis = document.querySelectorAll('.buy-helmet__choice .choose__slider-visor');
 
@@ -605,13 +614,9 @@ buyCartLeftVis.forEach((item) => {
     item.id = currID + '_buy-cart';
 })
 
-console.log(buyCartLeftVis)
-
 const buyCartLeftHold = document.querySelectorAll('.buy-helmet__choice .choose__slider-holder');
 
 buyCartLeftHold.forEach((item) => {
     const currID = item.id;
     item.id = currID + '_buy-cart';
 })
-
-console.log(buyCartLeftHold)
