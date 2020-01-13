@@ -360,10 +360,14 @@ showHideButtonUp();
 
 window.addEventListener("resize", chooseResizing);
 
+const totalPrice = document.querySelector(".choose .choose__prices");
+const chooseHeading = document.querySelector(".choose__positions-heading-wrapper");
+const featuresNote = document.querySelector(".features__description-note-wrapper");
+
 function chooseResizing() {
-    const totalPrice = document.querySelector(".choose__prices");
-    const chooseHeading = document.querySelector(".choose__positions-heading-wrapper");
-    const featuresNote = document.querySelector(".features__description-note-wrapper");
+    // const totalPrice = document.querySelector(".choose__prices");
+    // const chooseHeading = document.querySelector(".choose__positions-heading-wrapper");
+    // const featuresNote = document.querySelector(".features__description-note-wrapper");
     if (document.documentElement.clientWidth <= 1024) {
         document.querySelector(".choose .container").append(totalPrice);
         document.querySelector(".choose .container").prepend(chooseHeading);
@@ -375,6 +379,8 @@ function chooseResizing() {
         document.querySelector(".features__description").append(featuresNote);
 
     }
+
+    console.log(totalPrice.parentNode);
 }
 
 chooseResizing();
