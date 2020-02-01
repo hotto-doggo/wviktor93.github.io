@@ -47,16 +47,16 @@ form.addEventListener('submit', getSavedTODO);
 btnDel.addEventListener('click', getSavedTODO);
 
 function getSavedTODO() {
-    let currList = document.querySelectorAll(".list-group-item");
-    let currListInner = [];
-    currList.forEach(function(item) {
-        currListInner.push(item.innerHTML);
+    let wvik9currList = document.querySelectorAll(".list-group-item");
+    let wvik9currListInner = [];
+    wvik9currList.forEach(function(item) {
+        wvik9currListInner.push(item.innerHTML);
     })
 
-    // console.log(currListInner);
-    // console.log(JSON.stringify(currListInner));
+    // console.log(wvik9currListInner);
+    // console.log(JSON.stringify(wvik9currListInner));
 
-    localStorage.setItem("currList", JSON.stringify(currListInner));   
+    localStorage.setItem("wvik9currList", JSON.stringify(wvik9currListInner));   
 }
 
 
@@ -70,11 +70,11 @@ function inputSavedItems (){
         item.remove();
     })
 
-    let currList = localStorage.getItem("currList");
-    currList = JSON.parse(currList);
-    // console.log(currList);
+    let wvik9currList = localStorage.getItem("wvik9currList");
+    wvik9currList = JSON.parse(wvik9currList);
+    // console.log(wvik9currList);
 
-    currList.forEach(function(item) {
+    wvik9currList.forEach(function(item) {
         // console.log(item);
 
         const liElem = document.createElement('li');
@@ -83,6 +83,6 @@ function inputSavedItems (){
         list.append(liElem);
     })
 
-    // localStorage.removeItem("currList");
-    // console.log(localStorage.getItem("currList"))
+    // localStorage.removeItem("wvik9currList");
+    // console.log(localStorage.getItem("wvik9currList"))
 }
