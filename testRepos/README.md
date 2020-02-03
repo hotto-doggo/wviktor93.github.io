@@ -44,4 +44,4 @@ Below you can see my latest work and the final project from the courses:
 **September 2019 / January 2020** - Web Development (Layout) course in HTML and CSS, JavaScript in Stormnet.
 
 ## 7. Knowledge of foreign languages:
-**English** - A2 + *(according to the test version in EPAM)*.
+**English** - A2 + (according to the test version in EPAM).
